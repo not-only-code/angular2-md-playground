@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder, REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
 import { MdCard } from '@angular2-material/card';
 import { MdButton } from '@angular2-material/button';
 import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
 
+import { AuthService } from '../shared';
+
 @Component({
   selector: 'app-login',
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.scss'],
-  directives: [ REACTIVE_FORM_DIRECTIVES, MD_INPUT_DIRECTIVES, MdCard, MdButton ]
+  directives: [ REACTIVE_FORM_DIRECTIVES, MD_INPUT_DIRECTIVES, MdCard, MdButton ],
 })
 export class LoginComponent implements OnInit {
 
   form: FormGroup;
   emailValidator: string = '(([a-zA-Z]|[0-9])|([-]|[_]|[.]))+[@](([a-zA-Z0-9])|([-])){2,63}[.](([a-zA-Z0-9]){2,63})+';
-  constructor(fb: FormBuilder) {
+  constructor(private router:Router, fb: FormBuilder, private authService: AuthService) {
     this.form = fb.group({
       "email": new FormControl("", Validators.compose([
         Validators.required,
@@ -37,6 +40,14 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin(): void {
-    console.log('loggin!!!!', this.form);
+    if (!this.form.valid) { return; }
+    
+    this.authService.login(this.form.value)
+      .then((res) => {
+        this.router.navigate(['/home'])
+      })      
+      .catch((res) => {
+        console.log('error!!');
+      });
   }
 }
