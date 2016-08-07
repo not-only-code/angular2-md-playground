@@ -1,0 +1,11 @@
+<md-card class="login-card">
+  <img md-card-image src="https://material.angularjs.org/latest/img/washedout.png">
+  <md-card-content>
+    <form [formGroup]="form" (submit)="doLogin(event)" novalidate>
+      <md-input type="email" placeholder="E-mail" formControlName="email" required [dividerColor]="getDividerColor('email')"></md-input>
+      <md-input #password type="password" placeholder="Password" formControlName="password" required minLength="8" maxLength="8" [dividerColor]="getDividerColor('password')"><md-hint>{{password.characterCount}} / 8</md-hint></md-input>
+      <br>
+      <button md-raised-button color="primary" type="submit" class="end">access</button>
+    </form>
+  </md-card-content>
+</md-card>
