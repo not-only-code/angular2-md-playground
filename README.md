@@ -1,6 +1,6 @@
 # Angular2 Material Design Playground
 
-This is an [Angular2](https://angular.io/) + [Material Design](https://material.google.com/) **style guide** directives.
+This is a simple [Angular 2](https://angular.io/) app to try [material design](https://material.google.com/), forms and routing system. Also uses angular-cli + webpack, recently added.
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
