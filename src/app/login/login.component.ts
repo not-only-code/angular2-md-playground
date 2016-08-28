@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators, FormBuilder, REACTIVE_FORM_DIRECTIV
 import { MdCard } from '@angular2-material/card';
 import { MdButton } from '@angular2-material/button';
 import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
+import { MdRipple } from '@angular2-material/core/core';
 
 import { AuthService } from '../shared';
 
@@ -11,7 +12,7 @@ import { AuthService } from '../shared';
   selector: 'app-login',
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.scss'],
-  directives: [ REACTIVE_FORM_DIRECTIVES, MD_INPUT_DIRECTIVES, MdCard, MdButton ],
+  directives: [ REACTIVE_FORM_DIRECTIVES, MD_INPUT_DIRECTIVES, MdCard, MdRipple, MdButton ],
 })
 export class LoginComponent implements OnInit {
 
